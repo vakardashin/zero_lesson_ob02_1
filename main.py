@@ -17,6 +17,7 @@ class User:
     def set_access_level(self, access_level):
         self._access_level = access_level
 
+
 class Admin(User):
     def __init__(self, user_id, name):
         super().__init__(user_id, name, access_level='admin')
@@ -29,18 +30,18 @@ class Admin(User):
         if user in self._user_list:
             self._user_list.remove(user)
         else:
-            print(f"User {user.get_name()} not found in the list.")
+            print(f"Сотрудник {user.get_name()} не найден в списке.")
+
 
 # Пример использования:
-user1 = User(1, "John Doe")
-user2 = User(2, "Jane Smith")
+user1 = User(1, "Иван Петров")
+user2 = User(2, "Пётр Сидоров")
 admin = Admin(100, "Admin User")
 
 admin.add_user(user1)
 admin.add_user(user2)
 
-print(f"Admin's user list: {[user.get_name() for user in admin._user_list]}")
+print(f"Список сотрудников у админа: {[user.get_name() for user in admin._user_list]}")
 
 admin.remove_user(user1)
-print(f"Admin's user list after removing {user1.get_name()}: {[user.get_name() for user in admin._user_list]}")
-
+print(f"Список после удаления сотрудника {user1.get_name()}: {[user.get_name() for user in admin._user_list]}")
